@@ -22,7 +22,7 @@ IFS=';' read -ra ENDPOINTS <<< "$MOONSHOT_UPDATE_ENDPOINTS_LIST"
 for cmd in "${ENDPOINTS[@]}"; do
   cmd=$(replace_placeholders "$cmd")
   echo "Executing: $cmd"
-  eval "$cmd"
+  eval $cmd
 done
 
 # # Trigger the cookbook run, which may take some time
