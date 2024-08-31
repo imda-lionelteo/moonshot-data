@@ -12,7 +12,6 @@ env:
 #   COOKBOOK_RUN: "python -m moonshot cli run_cookbook '$COOKBOOK_RUN_NAME' \"['common-risk-easy','common-risk-hard','mlc-ai-safety']\" \"['azure-openai-gpt4o']\" -n 1"
 #   COOKBOOK_RUN_NAME: testcookbookrun-${{ github.run_id }}
   GITHUB_MOONSHOT_CI_REPO_LOC: ${{ vars.GH_MOONSHOT_CI_REPO_LOC }}
-  MOONSHOT_ENDPOINTS_LIST: ${{ vars.MOONSHOT_UPDATE_ENDPOINTS_LIST }}
   AZURE_OPENAI_4O_UPDATE_ENDPOINT: ${{ secrets.AZURE_OPENAI_4O_UPDATE_ENDPOINT }}
 
 jobs:
@@ -27,7 +26,7 @@ jobs:
       - name: Install moonshot package with all dependencies
         run: |
           echo "Installing moonshot..."
-          pip install "aiverify-moonshot[all]"
+          pip install "aiverify-moonshot[all]==0.4.5"
 
       - name: Clone forked repository and install requirements
         run: |
