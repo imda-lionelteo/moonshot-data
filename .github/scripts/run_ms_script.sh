@@ -6,7 +6,7 @@ set -e
 # Function to replace placeholders with actual environment variable values
 replace_placeholders() {
   local cmd=$1
-  cmd=${cmd//\$AZURE_OPENAI_4O_UPDATE_ENDPOINT/$AZURE_OPENAI_4O_UPDATE_ENDPOINT}
+  cmd=${cmd//\$\{AZURE_OPENAI_4O_UPDATE_ENDPOINT\}/$AZURE_OPENAI_4O_UPDATE_ENDPOINT}
   echo "$cmd"
 }
 
