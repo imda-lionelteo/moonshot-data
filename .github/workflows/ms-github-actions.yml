@@ -13,7 +13,7 @@ env:
 #   COOKBOOK_RUN_NAME: testcookbookrun-${{ github.run_id }}
   GITHUB_MOONSHOT_CI_REPO_LOC: ${{ vars.GH_MOONSHOT_CI_REPO_LOC }}
   MOONSHOT_ENDPOINTS_LIST: ${{ vars.MOONSHOT_UPDATE_ENDPOINTS_LIST }}
-#   GITLAB_MOONSHOT_PROJECT_TOKEN: ${{ secrets.GITLAB_MOONSHOT_PROJECT_TOKEN }}
+  AZURE_OPENAI_4O_UPDATE_ENDPOINT: ${{ secrets.AZURE_OPENAI_4O_UPDATE_ENDPOINT }}
 
 jobs:
   run_ms_script:
@@ -71,17 +71,16 @@ jobs:
 
       - name: Update endpoints
         shell: bash
-        env:
-          AZURE_OPENAI_4O_UPDATE_ENDPOINT: ${{ secrets.AZURE_OPENAI_4O_UPDATE_ENDPOINT }}
         run: |
           echo "Updating endpoints..."
-          echo $MOONSHOT_ENDPOINTS_LIST
-          IFS=';' read -ra ENDPOINTS <<< $MOONSHOT_ENDPOINTS_LIST
-          echo $ENDPOINTS
-          for cmd in "${ENDPOINTS[@]}"; do
-            echo "Executing: $cmd"
-            eval $cmd
-          done
+          eval ${{ secrets.AZURE_OPENAI_4O_UPDATE_ENDPOINT }}
+          # echo $MOONSHOT_ENDPOINTS_LIST
+          # IFS=';' read -ra ENDPOINTS <<< $MOONSHOT_ENDPOINTS_LIST
+          # echo $ENDPOINTS
+          # for cmd in "${ENDPOINTS[@]}"; do
+          #   echo "Executing: $cmd"
+          #   eval $cmd
+          # done
 
       # - name: Trigger cookbook run
       #   run: |
