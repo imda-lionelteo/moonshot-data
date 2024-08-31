@@ -17,6 +17,7 @@ env:
 jobs:
   run_ms_script:
     runs-on: ubuntu-latest
+    shell: bash
     container:
       image: python:3.11
     steps:
@@ -69,7 +70,6 @@ jobs:
           EOF
 
       - name: Update endpoints
-        shell: bash
         run: |
           echo "Updating endpoints..."
           eval ${{ secrets.AZURE_OPENAI_4O_UPDATE_ENDPOINT }}
