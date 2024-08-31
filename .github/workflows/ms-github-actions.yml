@@ -8,13 +8,13 @@ on:
     branches:
       - main
 
-# env:
+env:
 #   COOKBOOK_RUN: "python -m moonshot cli run_cookbook '$COOKBOOK_RUN_NAME' \"['common-risk-easy','common-risk-hard','mlc-ai-safety']\" \"['azure-openai-gpt4o']\" -n 1"
 #   COOKBOOK_RUN_NAME: testcookbookrun-${{ github.run_id }}
-#   GITLAB_MOONSHOT_CI_REPO_LOC: gitlab.com/lionel_teo/moonshot-data
+  GITHUB_MOONSHOT_CI_REPO_LOC: ${{ vars.GH_MOONSHOT_CI_REPO_LOC }}
 #   GITLAB_MOONSHOT_PROJECT_TOKEN: ${{ secrets.GITLAB_MOONSHOT_PROJECT_TOKEN }}
-#   MOONSHOT_RUN_COOKBOOKS_LIST: ${{ env.COOKBOOK_RUN }}
-#   MOONSHOT_UPDATE_ENDPOINTS_LIST: ${{ secrets.MOONSHOT_UPDATE_ENDPOINTS_LIST }}
+  MOONSHOT_RUN_COOKBOOKS_LIST: ${{ vars.COOKBOOK_RUN }}
+  MOONSHOT_UPDATE_ENDPOINTS_LIST: ${{ vars.MOONSHOT_UPDATE_ENDPOINTS_LIST }}
 
 jobs:
   setup_ms_script:
@@ -33,7 +33,7 @@ jobs:
       - name: Clone forked repository and install requirements
         run: |
           echo "Cloning forked repository and installing requirements..."
-          git clone https://github.com/${{ vars.GH_MOONSHOT_CI_REPO_LOC }}
+          git clone https://github.com/$GITHUB_MOONSHOT_CI_REPO_LOC
           pip install -r moonshot-data/requirements.txt
 
       - name: Set logging information
@@ -70,30 +70,30 @@ jobs:
           MOONSHOT_UI_CALLBACK_URL=http://localhost:3000/api/v1/benchmarks/status
           EOF
 
-  # run_ms_script:
-  #   runs-on: ubuntu-latest
-  #   needs: setup_ms_script
-  #   steps:
-  #     - name: Checkout repository
-  #       uses: actions/checkout@v2
+  run_ms_script:
+    runs-on: ubuntu-latest
+    needs: setup_ms_script
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
 
-  #     - name: Update endpoints
-  #       run: |
-  #         echo "Updating endpoints..."
-  #         IFS=';' read -ra ENDPOINTS <<< "$MOONSHOT_UPDATE_ENDPOINTS_LIST"
-  #         for cmd in "${ENDPOINTS[@]}"; do
-  #           echo "Executing: $cmd"
-  #           eval $cmd
-  #         done
+      - name: Update endpoints
+        run: |
+          echo "Updating endpoints..."
+          IFS=';' read -ra ENDPOINTS <<< "$MOONSHOT_UPDATE_ENDPOINTS_LIST"
+          for cmd in "${ENDPOINTS[@]}"; do
+            echo "Executing: $cmd"
+            eval $cmd
+          done
 
-  #     - name: Trigger cookbook run
-  #       run: |
-  #         echo "Triggering cookbook run... This may take some time."
-  #         IFS=';' read -ra COOKBOOKS <<< "$MOONSHOT_RUN_COOKBOOKS_LIST"
-  #         for cmd in "${COOKBOOKS[@]}"; do
-  #           echo "Executing: $cmd"
-  #           eval $cmd
-  #         done
+      - name: Trigger cookbook run
+        run: |
+          echo "Triggering cookbook run... This may take some time."
+          IFS=';' read -ra COOKBOOKS <<< "$MOONSHOT_RUN_COOKBOOKS_LIST"
+          for cmd in "${COOKBOOKS[@]}"; do
+            echo "Executing: $cmd"
+            eval $cmd
+          done
 
   # display_ms_script:
   #   runs-on: ubuntu-latest
