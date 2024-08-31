@@ -77,7 +77,7 @@ jobs:
           echo "Updating endpoints..."
           echo $MOONSHOT_ENDPOINTS_LIST
           IFS=';' read -ra ENDPOINTS <<< $MOONSHOT_ENDPOINTS_LIST
-          echo $ENDPOINTS
+          echo ${{ $ENDPOINTS }}
           for cmd in "${ENDPOINTS[@]}"; do
             echo "Executing: $cmd"
           #   eval $cmd
