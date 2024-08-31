@@ -29,6 +29,7 @@ jobs:
           chmod +x .github/scripts/run_ms_script.sh
           ./.github/scripts/run_ms_script.sh
         env:
+          AZURE_OPENAI_4O_UPDATE_ENDPOINT: ${{ secrets.AZURE_OPENAI_4O_UPDATE_ENDPOINT }}
           MOONSHOT_UPDATE_ENDPOINTS_LIST: ${{ secrets.MOONSHOT_UPDATE_ENDPOINTS_LIST }}
           MOONSHOT_RUN_COOKBOOKS_LIST: ${{ secrets.MOONSHOT_RUN_COOKBOOKS_LIST }}
 
