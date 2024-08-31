@@ -76,7 +76,7 @@ jobs:
         shell: bash
         run: |
           echo "Updating endpoints..."
-          eval "python -m moonshot cli \"update_endpoint azure-openai-gpt4o \"[('uri','https://imda-aiss-openai-shared-aiss.openai.azure.com'),('token','1234'),('max_calls_per_second',10),('max_concurrency',10)]\"\""
+          eval "python -m moonshot cli \"update_endpoint azure-openai-gpt4o '[{\"uri\":\"https://imda-aiss-openai-shared-aiss.openai.azure.com\",\"token\":\"1234\",\"max_calls_per_second\":10,\"max_concurrency\":10}]'\""
           # echo $MOONSHOT_ENDPOINTS_LIST
           # IFS=';' read -ra ENDPOINTS <<< $MOONSHOT_ENDPOINTS_LIST
           # echo $ENDPOINTS
