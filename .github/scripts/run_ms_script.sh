@@ -3,10 +3,16 @@
 # Ensure the script exits if any command fails
 set -e
 
+# Function to escape a string for safe eval
+escape_string() {
+  local str="$1"
+  printf '%q' "$str"
+}
+
 # Function to replace placeholders with actual environment variable values
 replace_placeholders() {
   local cmd=$1
-  cmd=${cmd//\$\{AZURE_OPENAI_4O_UPDATE_ENDPOINT\}/$AZURE_OPENAI_4O_UPDATE_ENDPOINT}
+  cmd=${cmd//\$\{AZURE_OPENAI_4O_UPDATE_ENDPOINT\}/$(escape_string "$AZURE_OPENAI_4O_UPDATE_ENDPOINT")}
   echo "$cmd"
 }
 
