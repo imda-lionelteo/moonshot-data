@@ -12,7 +12,7 @@ env:
 #   COOKBOOK_RUN: "python -m moonshot cli run_cookbook '$COOKBOOK_RUN_NAME' \"['common-risk-easy','common-risk-hard','mlc-ai-safety']\" \"['azure-openai-gpt4o']\" -n 1"
 #   COOKBOOK_RUN_NAME: testcookbookrun-${{ github.run_id }}
   GITHUB_MOONSHOT_CI_REPO_LOC: ${{ vars.GH_MOONSHOT_CI_REPO_LOC }}
-  AZURE_OPENAI_4O_UPDATE_ENDPOINT: ${{ secrets.AZURE_OPENAI_4O_UPDATE_ENDPOINT }}
+  AZURE_OPENAI_4O_UPDATE_ENDPOINT: "${{ secrets.AZURE_OPENAI_4O_UPDATE_ENDPOINT }}"
 
 jobs:
   run_ms_script:
@@ -76,10 +76,7 @@ jobs:
         shell: bash
         run: |
           echo "Updating endpoints..."
-          ls -la
-          python -m moonshot cli "help"
-          ep = python -m moonshot cli "update_endpoint azure-openai-gpt4o \"[('uri','https://imda-aiss-openai-shared-aiss.openai.azure.com'),('token','1234'),('max_calls_per_second',10),('max_concurrency',10)]\""
-          eval ep
+          eval "${{ secrets.AZURE_OPENAI_4O_UPDATE_ENDPOINT }}"
           # echo $MOONSHOT_ENDPOINTS_LIST
           # IFS=';' read -ra ENDPOINTS <<< $MOONSHOT_ENDPOINTS_LIST
           # echo $ENDPOINTS
