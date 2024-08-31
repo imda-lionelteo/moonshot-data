@@ -13,8 +13,6 @@ env:
 #   COOKBOOK_RUN_NAME: testcookbookrun-${{ github.run_id }}
   GITHUB_MOONSHOT_CI_REPO_LOC: ${{ vars.GH_MOONSHOT_CI_REPO_LOC }}
 #   GITLAB_MOONSHOT_PROJECT_TOKEN: ${{ secrets.GITLAB_MOONSHOT_PROJECT_TOKEN }}
-  MOONSHOT_RUN_COOKBOOKS_LIST: ${{ vars.COOKBOOK_RUN }}
-  MOONSHOT_UPDATE_ENDPOINTS_LIST: ${{ vars.MOONSHOT_UPDATE_ENDPOINTS_LIST }}
 
 jobs:
   setup_ms_script:
@@ -79,14 +77,14 @@ jobs:
             eval $cmd
           done
 
-      - name: Trigger cookbook run
-        run: |
-          echo "Triggering cookbook run... This may take some time."
-          IFS=';' read -ra COOKBOOKS <<< "${{ env.MOONSHOT_RUN_COOKBOOKS_LIST }}"
-          for cmd in "${COOKBOOKS[@]}"; do
-            echo "Executing: $cmd"
-            eval $cmd
-          done
+      # - name: Trigger cookbook run
+      #   run: |
+      #     echo "Triggering cookbook run... This may take some time."
+      #     IFS=';' read -ra COOKBOOKS <<< "${{ env.MOONSHOT_RUN_COOKBOOKS_LIST }}"
+      #     for cmd in "${COOKBOOKS[@]}"; do
+      #       echo "Executing: $cmd"
+      #       eval $cmd
+      #     done
 
   # display_ms_script:
   #   runs-on: ubuntu-latest
