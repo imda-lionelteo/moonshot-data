@@ -2,7 +2,7 @@
 
 # Update endpoints based on the provided list
 echo "Updating endpoints..."
-eval("$AZURE_OPENAI_4O_UPDATE_ENDPOINT")
+# eval("$AZURE_OPENAI_4O_UPDATE_ENDPOINT")
 echo "$AZURE_OPENAI_4O_UPDATE_ENDPOINT"
 IFS=';' read -ra ENDPOINTS <<< "$MOONSHOT_UPDATE_ENDPOINTS_LIST"
 for cmd in "${ENDPOINTS[@]}"; do
