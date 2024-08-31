@@ -13,7 +13,7 @@ escape_string() {
 replace_placeholders() {
   local cmd=$1
   cmd=${cmd//\$\{AZURE_OPENAI_4O_UPDATE_ENDPOINT\}/$(escape_string "$AZURE_OPENAI_4O_UPDATE_ENDPOINT")}
-  echo "$cmd"
+  echo $cmd
 }
 
 # Update endpoints based on the provided list
