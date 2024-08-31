@@ -29,7 +29,8 @@ jobs:
           chmod +x .github/scripts/run_ms_script.sh
           ./.github/scripts/run_ms_script.sh
         env:
-          MOONSHOT_UPDATE_ENDPOINTS_LIST: "${{ vars.AZURE_OPENAI_4O_UPDATE_ENDPOINT }}"
+          MOONSHOT_UPDATE_ENDPOINTS_LIST: |
+            "${{ secrets.AZURE_OPENAI_4O_UPDATE_ENDPOINT }};${{ secrets.TOGETHER_LLAMA3_8B_CHAT_UPDATE_ENDPOINT }};${{ secrets.TOGETHER_LLAMA_GUARD_7B_UPDATE_ENDPOINT }}"
 
       # - name: Display Results
       #   run: ./scripts/display_ms_script.sh
