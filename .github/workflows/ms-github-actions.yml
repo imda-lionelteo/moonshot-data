@@ -69,11 +69,11 @@ jobs:
           HOST_PORT=5000
           MOONSHOT_UI_CALLBACK_URL=http://localhost:3000/api/v1/benchmarks/status
           EOF
-          
+
       - name: Update endpoints
         run: |
           echo "Updating endpoints..."
-          IFS=';' read -ra ENDPOINTS <<< "$MOONSHOT_UPDATE_ENDPOINTS_LIST"
+          IFS=';' read -ra ENDPOINTS <<< "${{ env.MOONSHOT_UPDATE_ENDPOINTS_LIST }}"
           for cmd in "${ENDPOINTS[@]}"; do
             echo "Executing: $cmd"
             eval $cmd
@@ -82,7 +82,7 @@ jobs:
       - name: Trigger cookbook run
         run: |
           echo "Triggering cookbook run... This may take some time."
-          IFS=';' read -ra COOKBOOKS <<< "$MOONSHOT_RUN_COOKBOOKS_LIST"
+          IFS=';' read -ra COOKBOOKS <<< "${{ env.MOONSHOT_RUN_COOKBOOKS_LIST }}"
           for cmd in "${COOKBOOKS[@]}"; do
             echo "Executing: $cmd"
             eval $cmd
