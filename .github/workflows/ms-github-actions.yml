@@ -16,7 +16,7 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Setup Moonshot
-        run: ./scripts/setup_ms_script.sh
+        run: ls -la #./scripts/setup_ms_script.sh
         env:
           GITHUB_MOONSHOT_CI_REPO_LOC: ${{ secrets.GITHUB_MOONSHOT_CI_REPO_LOC }}
 
