@@ -70,6 +70,8 @@ jobs:
           EOF
 
       - name: Update endpoints
+        env:
+          AZURE_OPENAI_KEY: ${{ secrets.AZURE_OPENAI_KEY }}
         run: |
           echo "Updating endpoints..."
           IFS=';' read -ra ENDPOINTS <<< $MOONSHOT_ENDPOINTS_LIST
