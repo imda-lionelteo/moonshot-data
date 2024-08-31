@@ -19,6 +19,8 @@ on:
 jobs:
   setup_ms_script:
     runs-on: ubuntu-latest
+    container:
+      image: python:3.11
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
