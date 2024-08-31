@@ -70,17 +70,18 @@ jobs:
           EOF
 
       - name: Update endpoints
+        shell: bash
         env:
           AZURE_OPENAI_KEY: ${{ secrets.AZURE_OPENAI_KEY }}
         run: |
           echo "Updating endpoints..."
           echo $MOONSHOT_ENDPOINTS_LIST
+          IFS=';' read -ra ENDPOINTS <<< $MOONSHOT_ENDPOINTS_LIST
           echo $ENDPOINTS
-          # IFS=';' read -ra ENDPOINTS <<< $MOONSHOT_ENDPOINTS_LIST
-          # for cmd in "${ENDPOINTS[@]}"; do
-          #   echo "Executing: $cmd"
-          # #   eval $cmd
-          # done
+          for cmd in "${ENDPOINTS[@]}"; do
+            echo "Executing: $cmd"
+          #   eval $cmd
+          done
 
       # - name: Trigger cookbook run
       #   run: |
