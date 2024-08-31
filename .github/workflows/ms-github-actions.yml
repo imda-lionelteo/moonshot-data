@@ -22,7 +22,7 @@ jobs:
           chmod +x .github/scripts/setup_ms_script.sh
           ./.github/scripts/setup_ms_script.sh
         env:
-          GITHUB_MOONSHOT_CI_REPO_LOC: ${{ secrets.GITHUB_MOONSHOT_CI_REPO_LOC }}
+          GITHUB_MOONSHOT_CI_REPO_LOC: ${{ vars.GH_MOONSHOT_CI_REPO_LOC }}
 
       - name: Run Moonshot
         run: |
