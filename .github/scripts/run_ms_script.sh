@@ -18,10 +18,9 @@ replace_placeholders() {
 
 # Update endpoints based on the provided list
 echo "Updating endpoints..."
-# MOONSHOT_UPDATE_ENDPOINTS_LIST="$AZURE_OPENAI_4O_UPDATE_ENDPOINT"
 IFS=';' read -ra ENDPOINTS <<< "$MOONSHOT_UPDATE_ENDPOINTS_LIST"
 for cmd in "${ENDPOINTS[@]}"; do
-  cmd=$(replace_placeholders "$cmd")
+#   cmd=$(replace_placeholders "$cmd")
   echo "Executing: $cmd"
   eval "$cmd"
 done
