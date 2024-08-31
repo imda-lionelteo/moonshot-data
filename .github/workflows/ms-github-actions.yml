@@ -30,8 +30,8 @@ jobs:
           ./.github/scripts/run_ms_script.sh
         env:
           AZURE_OPENAI_4O_UPDATE_ENDPOINT: ${{ secrets.AZURE_OPENAI_4O_UPDATE_ENDPOINT }}
-          MOONSHOT_UPDATE_ENDPOINTS_LIST: ${{ secrets.MOONSHOT_UPDATE_ENDPOINTS_LIST }}
-          MOONSHOT_RUN_COOKBOOKS_LIST: ${{ secrets.MOONSHOT_RUN_COOKBOOKS_LIST }}
+          MOONSHOT_UPDATE_ENDPOINTS_LIST: ${{ vars.MOONSHOT_UPDATE_ENDPOINTS_LIST }}
+          MOONSHOT_RUN_COOKBOOKS_LIST: ${{ vars.MOONSHOT_RUN_COOKBOOKS_LIST }}
 
       # - name: Display Results
       #   run: ./scripts/display_ms_script.sh
