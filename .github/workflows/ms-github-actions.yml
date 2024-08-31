@@ -29,6 +29,7 @@ jobs:
           chmod +x .github/scripts/run_ms_script.sh
           ./.github/scripts/run_ms_script.sh
         env:
+          GITHUB_RUN_ID: ${{ github.run_id }}
           MOONSHOT_RUN_COOKBOOKS_LIST: |
             ${{ vars.COOKBOOK_RUN }}
           MOONSHOT_UPDATE_ENDPOINTS_LIST: |
