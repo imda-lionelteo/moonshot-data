@@ -73,7 +73,7 @@ jobs:
         shell: bash
         env:
           AZURE_OPENAI_KEY: ${{ secrets.AZURE_OPENAI_KEY }}
-          AZURE_OPENAI_4o_UPDATE_ENDPOINT: ${{ secrets.AZURE_OPENAI_4o_UPDATE_ENDPOINT }}
+          AZURE_OPENAI_4O_UPDATE_ENDPOINT: ${{ secrets.AZURE_OPENAI_4o_UPDATE_ENDPOINT }}
         run: |
           echo "Updating endpoints..."
           echo $MOONSHOT_ENDPOINTS_LIST
