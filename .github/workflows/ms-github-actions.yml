@@ -69,14 +69,7 @@ jobs:
           HOST_PORT=5000
           MOONSHOT_UI_CALLBACK_URL=http://localhost:3000/api/v1/benchmarks/status
           EOF
-
-  run_ms_script:
-    runs-on: ubuntu-latest
-    needs: setup_ms_script
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v2
-
+          
       - name: Update endpoints
         run: |
           echo "Updating endpoints..."
