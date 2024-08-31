@@ -71,12 +71,11 @@ jobs:
       - name: Update endpoints
         run: |
           echo "Updating endpoints..."
-          echo "${{ env.MOONSHOT_UPDATE_ENDPOINTS_LIST }}"
-          # IFS=';' read -ra ENDPOINTS <<< "${{ env.MOONSHOT_UPDATE_ENDPOINTS_LIST }}"
-          # for cmd in "${ENDPOINTS[@]}"; do
-          #   echo "Executing: $cmd"
+          IFS=';' read -ra ENDPOINTS <<< "${{ vars.MOONSHOT_UPDATE_ENDPOINTS_LIST }}"
+          for cmd in "${ENDPOINTS[@]}"; do
+            echo "Executing: $cmd"
           #   eval $cmd
-          # done
+          done
 
       # - name: Trigger cookbook run
       #   run: |
