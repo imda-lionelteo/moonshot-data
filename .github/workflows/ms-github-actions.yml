@@ -31,7 +31,7 @@ jobs:
       - name: Clone forked repository and install requirements
         run: |
           echo "Cloning forked repository and installing requirements..."
-          git clone https://x-access-token:${{ secrets.GITHUB_TOKEN }}@${{ secrets.GITHUB_MOONSHOT_CI_REPO_LOC}}
+          git clone https://x-access-token:${{ secrets.GITHUB_TOKEN }}@${{ env.GH_MOONSHOT_CI_REPO_LOC}}
           pip install -r moonshot-data/requirements.txt
 
   #     - name: Set logging information
