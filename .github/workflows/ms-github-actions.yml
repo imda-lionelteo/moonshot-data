@@ -15,7 +15,7 @@ env:
 #   GITLAB_MOONSHOT_PROJECT_TOKEN: ${{ secrets.GITLAB_MOONSHOT_PROJECT_TOKEN }}
 
 jobs:
-  setup_ms_script:
+  run_ms_script:
     runs-on: ubuntu-latest
     container:
       image: python:3.11
