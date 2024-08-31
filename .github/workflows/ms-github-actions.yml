@@ -29,9 +29,8 @@ jobs:
           chmod +x .github/scripts/run_ms_script.sh
           ./.github/scripts/run_ms_script.sh
         env:
-          AZURE_OPENAI_4O_UPDATE_ENDPOINT: ${{ vars.AZURE_OPENAI_4O_UPDATE_ENDPOINT }}
-          MOONSHOT_UPDATE_ENDPOINTS_LIST: ${{ vars.MOONSHOT_UPDATE_ENDPOINTS_LIST }}
-          MOONSHOT_RUN_COOKBOOKS_LIST: ${{ vars.MOONSHOT_RUN_COOKBOOKS_LIST }}
+          AZURE_OPENAI_4O_UPDATE_ENDPOINT: ${{ secrets.AZURE_OPENAI_4O_UPDATE_ENDPOINT }}
+          MOONSHOT_UPDATE_ENDPOINTS_LIST: "python3 -m moonshot cli \"update_endpoint azure-openai-gpt4o \\\"[('max_calls_per_second',10)]\\\"\""
 
       # - name: Display Results
       #   run: ./scripts/display_ms_script.sh
