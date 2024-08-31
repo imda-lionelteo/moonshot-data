@@ -2,11 +2,11 @@
 
 # Update endpoints based on the provided list
 echo "Updating endpoints..."
-# IFS=';' read -ra ENDPOINTS <<< "$MOONSHOT_UPDATE_ENDPOINTS_LIST"
-# for cmd in "${ENDPOINTS[@]}"; do
-#   echo "Executing: $cmd"
+IFS=';' read -ra ENDPOINTS <<< "$MOONSHOT_UPDATE_ENDPOINTS_LIST"
+for cmd in "${ENDPOINTS[@]}"; do
+  echo "Executing: $cmd"
 #   eval $cmd
-# done
+done
 
 # # Trigger the cookbook run, which may take some time
 # echo "Triggering cookbook run... This may take some time."
