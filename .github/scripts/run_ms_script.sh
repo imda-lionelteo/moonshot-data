@@ -6,7 +6,7 @@ IFS=';' read -ra ENDPOINTS <<< "$MOONSHOT_UPDATE_ENDPOINTS_LIST"
 for cmd in "${ENDPOINTS[@]}"; do
   echo "Executing: $cmd"
   cmd=$(echo $cmd | sed "s/\$AZURE_OPENAI_4O_UPDATE_ENDPOINT/${AZURE_OPENAI_4O_UPDATE_ENDPOINT}/g")
-  echo $cmd
+  `$cmd`
 #   eval "$cmd"
 done
 
