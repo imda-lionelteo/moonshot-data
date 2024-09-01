@@ -10,4 +10,4 @@ git add -f ./generated-outputs/*
 # Commit the changes with a message including the pipeline ID
 git commit -m "Update generated files [ci skip] - Pipeline ID ($GITHUB_RUN_ID)"
 # Push the changes to the repository, skipping CI for this push
-git push -o ci.skip
+# git push -o ci.skip
