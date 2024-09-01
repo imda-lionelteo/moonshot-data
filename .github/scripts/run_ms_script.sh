@@ -3,7 +3,7 @@
 # Function to replace placeholders with actual environment variable values
 replace_placeholders() {
   local cmd=$1
-  cmd=${cmd//\$GITHUB_RUN_ID/$GITHUB_RUN_ID}
+  cmd=${cmd//\$COOKBOOK_RUN_NAME/$COOKBOOK_RUN_NAME}
   echo "$cmd"
 }
 
