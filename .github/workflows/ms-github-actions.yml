@@ -42,8 +42,8 @@ jobs:
         env:
           COOKBOOK_RUN_NAME: testcookbookrun-${{ github.run_id }}
 
-      # - name: Commit Results
-      #   run: ./scripts/commit_ms_script.sh
-      #   env:
-      #     GITLAB_MOONSHOT_PROJECT_TOKEN: ${{ secrets.GITLAB_MOONSHOT_PROJECT_TOKEN }}
-      #     CI_PIPELINE_ID: ${{ github.run_id }}
+      - name: Commit Results
+        run: ./scripts/commit_ms_script.sh
+        env:
+          GITLAB_MOONSHOT_PROJECT_TOKEN: ${{ secrets.GITLAB_MOONSHOT_PROJECT_TOKEN }}
+          CI_PIPELINE_ID: ${{ github.run_id }}
