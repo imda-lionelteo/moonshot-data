@@ -30,7 +30,7 @@ jobs:
           ./.github/scripts/run_ms_script.sh
         env:
           COOKBOOK_RUN_NAME: |
-            "testcookbookrun-${{ github.run_id }}"
+            testcookbookrun-${{ github.run_id }}
           MOONSHOT_RUN_COOKBOOKS_LIST: |
             ${{ vars.COOKBOOK_RUN }}
           MOONSHOT_UPDATE_ENDPOINTS_LIST: |
@@ -42,7 +42,7 @@ jobs:
           ./.github/scripts/display_ms_script.sh
         env:
           COOKBOOK_RUN_NAME: |
-            "testcookbookrun-${{ github.run_id }}"
+            testcookbookrun-${{ github.run_id }}
 
       # - name: Commit Results
       #   run: ./scripts/commit_ms_script.sh
