@@ -8,6 +8,6 @@ git config --global user.name "CI Bot"
 # Add generated output files to the commit
 git add -f ./generated-outputs/*
 # Commit the changes with a message including the pipeline ID
-git commit -m "Update generated files [ci skip] - Pipeline ID ($CI_PIPELINE_ID)"
+git commit -m "Update generated files [ci skip] - Pipeline ID ($GITHUB_RUN_ID)"
 # Push the changes to the repository, skipping CI for this push
-# git push -o ci.skip https://root:${GITLAB_MOONSHOT_PROJECT_TOKEN}@${GITLAB_MOONSHOT_CI_REPO_LOC} HEAD
+git push -o ci.skip
