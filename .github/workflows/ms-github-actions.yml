@@ -48,13 +48,14 @@ jobs:
       - name: Commit Results
         run: |
           set +e
-          touch moonshot-data/generated-outputs/helloworld
+          cd moonshot-data/
+          touch generated-outputs/helloworld
           # Configure git user for committing changes
           git config --global user.email "ci@example.com"
           git config --global user.name "CI Bot"
           ls -la
           # Add generated output files to the commit
-          git add -f ./moonshot-data/generated-outputs/*
+          git add -f ./generated-outputs/*
           git status
           # Commit the changes with a message including the pipeline ID
           git commit -m "Update generated files [ci skip] - Pipeline ID ($GITHUB_RUN_ID)"
