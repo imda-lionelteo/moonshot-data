@@ -44,9 +44,9 @@ jobs:
         env:
           COOKBOOK_RUN_NAME: testcookbookrun-${{ github.run_id }}
 
-      # - name: Commit Results
-      #   run: |
-      #     chmod +x .github/scripts/commit_ms_script.sh
-      #     ./.github/scripts/commit_ms_script.sh
-      #   env:
-      #     GITHUB_RUN_ID: ${{ github.run_id }}
+      - name: Commit Results
+        run: |
+          chmod +x .github/scripts/commit_ms_script.sh
+          ./.github/scripts/commit_ms_script.sh
+        env:
+          GITHUB_RUN_ID: ${{ github.run_id }}
