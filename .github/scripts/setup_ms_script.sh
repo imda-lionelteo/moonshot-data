@@ -2,7 +2,7 @@
 
 # Install moonshot package with all dependencies
 echo "Installing moonshot..."
-pip install "aiverify-moonshot[all]"
+pip install "aiverify-moonshot[all]==0.4.5"
 
 # Clone the forked repository and install its requirements
 echo "Cloning forked repository and installing requirements..."
