@@ -53,7 +53,7 @@ jobs:
           git config --global user.name "CI Bot"
           ls -la
           # Add generated output files to the commit
-          git add -f ./generated-outputs/*
+          git add -f generated-outputs/*
           git status
           # Commit the changes with a message including the pipeline ID
           git commit -m "Update generated files [ci skip] - Pipeline ID ($GITHUB_RUN_ID)"
