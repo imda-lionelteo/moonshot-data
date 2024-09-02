@@ -24,13 +24,13 @@ jobs:
 
       - name: Setup Moonshot
         run: |
-          chmod +x .github/scripts/setup_ms_script.sh
-          ./.github/scripts/setup_ms_script.sh
+          chmod +x moonshot-data/.github/scripts/setup_ms_script.sh
+          ./moonshot-data/.github/scripts/setup_ms_script.sh
 
       - name: Run Moonshot
         run: |
-          chmod +x .github/scripts/run_ms_script.sh
-          ./.github/scripts/run_ms_script.sh
+          chmod +x moonshot-data/.github/scripts/run_ms_script.sh
+          ./moonshot-data/.github/scripts/run_ms_script.sh
         env:
           COOKBOOK_RUN_NAME: testcookbookrun-${{ github.run_id }}
           MOONSHOT_RUN_COOKBOOKS_LIST: |
@@ -40,8 +40,8 @@ jobs:
 
       - name: Display Results
         run: |
-          chmod +x .github/scripts/display_ms_script.sh
-          ./.github/scripts/display_ms_script.sh
+          chmod +x moonshot-data/.github/scripts/display_ms_script.sh
+          ./moonshot-data/.github/scripts/display_ms_script.sh
         env:
           COOKBOOK_RUN_NAME: testcookbookrun-${{ github.run_id }}
 
