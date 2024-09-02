@@ -19,6 +19,7 @@ jobs:
         with:
           repository: ${{ vars.GH_MOONSHOT_CI_REPO_LOC }}
           ref: 'main'
+          path: moonshot-data
           token:  ${{ secrets.ACTIONS_GITHUB_TOKEN }}
 
       # - name: Setup Moonshot
