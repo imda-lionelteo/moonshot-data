@@ -22,45 +22,43 @@ jobs:
           path: moonshot-data
           token:  ${{ secrets.ACTIONS_GITHUB_TOKEN }}
 
-      # - name: Setup Moonshot
-      #   run: |
-      #     chmod +x .github/scripts/setup_ms_script.sh
-      #     ./.github/scripts/setup_ms_script.sh
+      - name: Setup Moonshot
+        run: |
+          chmod +x .github/scripts/setup_ms_script.sh
+          ./.github/scripts/setup_ms_script.sh
 
-      # - name: Run Moonshot
-      #   run: |
-      #     chmod +x .github/scripts/run_ms_script.sh
-      #     ./.github/scripts/run_ms_script.sh
-      #   env:
-      #     COOKBOOK_RUN_NAME: testcookbookrun-${{ github.run_id }}
-      #     MOONSHOT_RUN_COOKBOOKS_LIST: |
-      #       ${{ vars.COOKBOOK_RUN }}
-      #     MOONSHOT_UPDATE_ENDPOINTS_LIST: |
-      #       ${{ secrets.AZURE_OPENAI_4O_UPDATE_ENDPOINT }};${{ secrets.TOGETHER_LLAMA3_8B_CHAT_UPDATE_ENDPOINT }};${{ secrets.TOGETHER_LLAMA_GUARD_7B_UPDATE_ENDPOINT }}
+      - name: Run Moonshot
+        run: |
+          chmod +x .github/scripts/run_ms_script.sh
+          ./.github/scripts/run_ms_script.sh
+        env:
+          COOKBOOK_RUN_NAME: testcookbookrun-${{ github.run_id }}
+          MOONSHOT_RUN_COOKBOOKS_LIST: |
+            ${{ vars.COOKBOOK_RUN }}
+          MOONSHOT_UPDATE_ENDPOINTS_LIST: |
+            ${{ secrets.AZURE_OPENAI_4O_UPDATE_ENDPOINT }};${{ secrets.TOGETHER_LLAMA3_8B_CHAT_UPDATE_ENDPOINT }};${{ secrets.TOGETHER_LLAMA_GUARD_7B_UPDATE_ENDPOINT }}
 
-      # - name: Display Results
-      #   run: |
-      #     chmod +x .github/scripts/display_ms_script.sh
-      #     ./.github/scripts/display_ms_script.sh
-      #   env:
-      #     COOKBOOK_RUN_NAME: testcookbookrun-${{ github.run_id }}
+      - name: Display Results
+        run: |
+          chmod +x .github/scripts/display_ms_script.sh
+          ./.github/scripts/display_ms_script.sh
+        env:
+          COOKBOOK_RUN_NAME: testcookbookrun-${{ github.run_id }}
 
       - name: Commit Results
         run: |
-          set +e
           cd moonshot-data/
-          touch generated-outputs/helloworld
           # Configure git user for committing changes
           git config --global user.email "ci@example.com"
           git config --global user.name "CI Bot"
           ls -la
           # Add generated output files to the commit
           git add -f ./generated-outputs/*
+          # Show git status
           git status
           # Commit the changes with a message including the pipeline ID
           git commit -m "Update generated files [ci skip] - Pipeline ID ($GITHUB_RUN_ID)"
           # Push the changes to the repository, skipping CI for this push
           git push -o ci.skip
-          set -e
         env:
           GITHUB_RUN_ID: ${{ github.run_id }}

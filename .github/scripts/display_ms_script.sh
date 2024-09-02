@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Define the path to the JSON file containing the results
-json_file="generated-outputs/results/$COOKBOOK_RUN_NAME.json"
+json_file="moonshot-data/generated-outputs/results/$COOKBOOK_RUN_NAME.json"
 
 # Check if the JSON file exists
 if [ ! -f "$json_file" ]; then
