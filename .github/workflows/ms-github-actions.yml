@@ -51,6 +51,7 @@ jobs:
           # Configure git user for committing changes
           git config --global user.email "ci@example.com"
           git config --global user.name "CI Bot"
+          ls -la
           # Add generated output files to the commit
           git add -f ./generated-outputs/*
           git status
